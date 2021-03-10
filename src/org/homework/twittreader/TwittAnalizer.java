@@ -21,7 +21,6 @@ public class TwittAnalizer {
                 if (santimentWeight != 0.0f) {
                     weight += santimentWeight;
                     System.out.println("founded santiment: " + santiment);
-                    pos += santimentSize;
                     break;
                 }
             }
