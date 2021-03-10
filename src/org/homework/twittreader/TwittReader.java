@@ -9,7 +9,7 @@ public class TwittReader {
 
     public static void main(String[] args) {
 
-        long now = System.currentTimeMillis();
+        long now = System.currentTimeMillis(); // profiling
 
         Vocabulary vocabulary = new Vocabulary();
         try {
@@ -18,9 +18,11 @@ public class TwittReader {
             System.out.println(e.getMessage());
             throw  new RuntimeException(e);
         }
-        long timeAfterCreationVoc = System.currentTimeMillis();
+        long timeAfterCreationVoc = System.currentTimeMillis(); // profiling
+
         try (FileReader fileReader = new FileReader("1984.txt");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
             StringBuilder bodyBuilder = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -32,8 +34,8 @@ public class TwittReader {
         } catch (IOException e) {
             System.out.println(e);
         }
-        long finish = System.currentTimeMillis();
-        System.out.println(" time ellapsed (ms): " + (finish - now));
-        System.out.println(" time ellapsed after creation vocabulary (ms): " + (finish - timeAfterCreationVoc));
+        long finish = System.currentTimeMillis(); // profiling
+        System.out.println(" time ellapsed (ms): " + (finish - now)); // profiling
+        System.out.println(" time ellapsed after creation vocabulary (ms): " + (finish - timeAfterCreationVoc)); // profiling
     }
 }
