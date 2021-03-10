@@ -3,6 +3,8 @@ package org.homework.twittreader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TwittReader {
 
@@ -10,34 +12,33 @@ public class TwittReader {
     public static void main(String[] args) {
 
         long now = System.currentTimeMillis(); // profiling
-
+        List<Twitt> twitts = new ArrayList<>();
         Vocabulary vocabulary = new Vocabulary();
         try {
-            vocabulary.init("voc.csv");
+            vocabulary.init("sentiments.csv");
         } catch (AppException e) {
             System.out.println(e.getMessage());
             throw  new RuntimeException(e);
         }
         long timeAfterCreationVoc = System.currentTimeMillis(); // profiling
-        long timeAfterReadingFile = 0L;
-        try (FileReader fileReader = new FileReader("1984.txt");
+
+        try (FileReader fileReader = new FileReader("family_tweets2014.txt");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
-            StringBuilder bodyBuilder = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                bodyBuilder.append(line);
+                if (line.trim().length() > 1) {
+                    Twitt twitt = new Twitt(line);
+                    TwittAnalizer.analizeTwitt(twitt, vocabulary);
+                    twitts.add(twitt);
+                }
             }
-            timeAfterReadingFile = System.currentTimeMillis(); // profiling
-            Twitt twitt = new Twitt(bodyBuilder.toString());
-            TwittAnalizer.analizeTwitt(twitt, vocabulary);
-            System.out.println("Twitter weight: " + twitt.getWeight());
         } catch (IOException e) {
             System.out.println(e);
         }
         long finish = System.currentTimeMillis(); // profiling
         System.out.println(" time ellapsed (ms): " + (finish - now)); // profiling
         System.out.println(" time ellapsed after creation vocabulary (ms): " + (finish - timeAfterCreationVoc)); // profiling
-        System.out.println(" time ellapsed after reading twit file (ms): " + (finish - timeAfterReadingFile)); // profiling
+
     }
 }

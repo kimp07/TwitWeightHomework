@@ -4,9 +4,11 @@ public class Twitt {
 
     private String body;
     private double weight;
+    private String foundedSantiments;
 
     public Twitt(String body) {
         this.body = body;
+        this.foundedSantiments = "";
     }
 
     public String getBody() {
@@ -19,5 +21,9 @@ public class Twitt {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public void appentFoundedSantiment(String santiment) {
+        foundedSantiments += santiment + ";";
     }
 }
