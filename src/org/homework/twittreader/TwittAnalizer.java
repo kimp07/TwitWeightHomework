@@ -24,7 +24,7 @@ public class TwittAnalizer {
 
         int bodySize = twitt.getBody().length() - 1;
         int pos = 0;
-        while (pos < (bodySize - vocabulary.getMinSantimentLength()) && pos >= 0) {
+        while (pos <= (bodySize - vocabulary.getMinSantimentLength()) && pos >= 0) {
             if (twitt.getBody().charAt(pos) == space) {
                 pos++;
             } else {
