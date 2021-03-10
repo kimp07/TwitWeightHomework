@@ -10,7 +10,9 @@ public class TwittAnalizer {
 
         int bodySize = twitt.getBody().length() - 1;
         for (int pos = 0; pos < (bodySize - vocabulary.getMinSantimentLength()); pos++) {
-
+            if (twitt.getBody().charAt(pos) == space) {
+                continue;
+            }
             int endPos = vocabulary.getMaxSantimentLength();
             if (pos + vocabulary.getMaxSantimentLength() > (bodySize + 1)) {
                 endPos = bodySize - pos + 1;
