@@ -73,12 +73,7 @@ public class Vocabulary {
 
     private float getSantimentWeight(String santiment, int up, int bottom) {
         float weight = 0.0f;
-        if (up == bottom) {
-            if (santiment.equals(storageSantiments[up])) {
-                weight = storageWieghts[up];
-            }
-            return weight;
-        } else if (bottom - up == 1) {
+        if (bottom - up <= 1) { // exit from recursion
             if (santiment.equals(storageSantiments[up])) {
                 weight = storageWieghts[up];
             } else if (santiment.equals(storageSantiments[bottom])) {

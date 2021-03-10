@@ -19,7 +19,7 @@ public class TwittReader {
             throw  new RuntimeException(e);
         }
         long timeAfterCreationVoc = System.currentTimeMillis(); // profiling
-
+        long timeAfterReadingFile = 0L;
         try (FileReader fileReader = new FileReader("1984.txt");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
@@ -28,6 +28,7 @@ public class TwittReader {
             while ((line = bufferedReader.readLine()) != null) {
                 bodyBuilder.append(line);
             }
+            timeAfterReadingFile = System.currentTimeMillis(); // profiling
             Twitt twitt = new Twitt(bodyBuilder.toString());
             TwittAnalizer.analizeTwitt(twitt, vocabulary);
             System.out.println("Twitter weight: " + twitt.getWeight());
@@ -37,5 +38,6 @@ public class TwittReader {
         long finish = System.currentTimeMillis(); // profiling
         System.out.println(" time ellapsed (ms): " + (finish - now)); // profiling
         System.out.println(" time ellapsed after creation vocabulary (ms): " + (finish - timeAfterCreationVoc)); // profiling
+        System.out.println(" time ellapsed after reading twit file (ms): " + (finish - timeAfterReadingFile)); // profiling
     }
 }
