@@ -32,7 +32,7 @@ public class TwittAnalizer {
             }
             int lastSpace = santiment.lastIndexOf(space);
             if (lastSpace > 0) {
-                santiment = santiment.substring(0, lastSpace); // last symbol before space
+                santiment = santiment.substring(0, lastSpace).trim(); // last symbol before space
             } else {
                 santiment = "";
             }
