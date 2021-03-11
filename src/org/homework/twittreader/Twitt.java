@@ -26,4 +26,8 @@ public class Twitt {
     public void appentFoundedSantiment(String santiment) {
         foundedSantiments += santiment + ";";
     }
+
+    public void addWeight(float weight) {
+        this.weight += weight;
+    }
 }
