@@ -30,4 +30,8 @@ public class Twitt {
     public void addWeight(float weight) {
         this.weight += weight;
     }
+
+    public String getFoundedSantiments() {
+        return foundedSantiments;
+    }
 }

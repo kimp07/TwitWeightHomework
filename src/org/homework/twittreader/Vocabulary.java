@@ -68,15 +68,15 @@ public class Vocabulary {
     }
 
     private int compareSantiment(String santiment, int index) {
-        return storageSantiments[index].compareTo(santiment.toLowerCase());
+        return storageSantiments[index].compareToIgnoreCase(santiment);
     }
 
     private float getSantimentWeight(String santiment, int up, int bottom) {
         float weight = 0.0f;
         if (bottom - up <= 1) { // exit from recursion
-            if (santiment.equals(storageSantiments[up])) {
+            if (santiment.equalsIgnoreCase(storageSantiments[up])) {
                 weight = storageWieghts[up];
-            } else if (santiment.equals(storageSantiments[bottom])) {
+            } else if (santiment.equalsIgnoreCase(storageSantiments[bottom])) {
                 weight = storageWieghts[bottom];
             }
             return weight;

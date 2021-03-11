@@ -39,5 +39,10 @@ public class TwittReader {
         long finish = System.currentTimeMillis(); // profiling
         System.out.println(" time ellapsed (ms): " + (finish - now)); // profiling
         System.out.println(" time ellapsed after creation vocabulary (ms): " + (finish - timeAfterCreationVoc)); // profiling
+        twitts.forEach(t -> {
+            System.out.println(t.getBody());
+            System.out.println(t.getFoundedSantiments());
+            System.out.println(t.getWeight());
+        });
     }
 }
