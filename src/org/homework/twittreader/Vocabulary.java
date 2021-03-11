@@ -68,7 +68,7 @@ public class Vocabulary {
     }
 
     private int compareSantiment(String santiment, int index) {
-        return storageSantiments[index].compareTo(santiment);
+        return storageSantiments[index].compareTo(santiment.toLowerCase());
     }
 
     private float getSantimentWeight(String santiment, int up, int bottom) {

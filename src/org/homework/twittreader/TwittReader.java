@@ -39,6 +39,5 @@ public class TwittReader {
         long finish = System.currentTimeMillis(); // profiling
         System.out.println(" time ellapsed (ms): " + (finish - now)); // profiling
         System.out.println(" time ellapsed after creation vocabulary (ms): " + (finish - timeAfterCreationVoc)); // profiling
-
     }
 }
